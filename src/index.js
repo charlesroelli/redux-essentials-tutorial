@@ -5,10 +5,13 @@ import App from './App'
 import store from './app/store'
 import { Provider } from 'react-redux'
 
+import { extendedApiSlice } from './features/users/usersSlice'
 import { worker } from './api/server'
 
 // Start our mock API server
 worker.start({ onUnhandledRequest: 'bypass' })
+
+store.dispatch(extendedApiSlice.endpoints.getUsers.initiate())
 
 ReactDOM.render(
   <React.StrictMode>
